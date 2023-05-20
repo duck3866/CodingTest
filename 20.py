@@ -1,9 +1,13 @@
-a,b=map(int,input().split())
-j=0
-while a>=j:
-	
-	print("나는야코딩의신",end=' ')
-	j+=1
-print("")
-for i in range(b):
-	print("열공!",end=' ')
+a=list(map(int,input().split()))#649 733 643 55 651 915 521 685 215 659 
+b=[]
+c=[]
+for i in a:
+    if i%2==0:
+        b.append(i)
+    else:
+        c.append(i)
+if len(c)>0:
+    print(max(c),end=' ')
+if len(b)>0:
+    print(max(b))
+
