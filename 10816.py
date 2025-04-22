@@ -1,34 +1,47 @@
 def BinarySearch(target, a):
-    find = 0
     left = 0
     right = len(a)-1
-    middle = len(a) // 2
     # print("타겟:중간값",target,middle)
-    while left < right:
-        if a[middle] < target:
+    while left <= right:
+        middle = (left + right)//2
+        if a[middle] == target:
+            return a[middle]
+        elif a[middle] < target:
             left = middle + 1
             # print("작다")
         elif a[middle] > target:
             right = middle - 1
             # print("크다")
-        middle = (left + right)//2
-        if a[middle] == target:
-            find = middle
-            return True#find
         # print(left,right,middle)
-    return False
+    return None
 # arr = list(map(int,input().split()))
 # print(BinarySearch(N,arr))
-result = []
 N = int(input())
 Narr = list(map(int,input().split()))
 M = int(input())
 Marr = list(map(int,input().split()))
+dic = {}
+for i in Narr:
+    if i not in dic:
+        dic[i] = 1
+    else:
+        dic[i] +=1
 Narr.sort()
 for i in Marr:
-    print(1 if BinarySearch(i,Narr) else 0)
+    if BinarySearch(i,Narr) != None:
+        if i != Marr[-1]:
+            print(dic[i],end = " ")
+        else:
+            print(dic[i])
+    else:
+        if i != Marr[-1]:
+            print(0,end=" ")
+        else:
+            print(0)
+
+
 # dic = {}
 
-# 1. 지가 가지고 있는 카드가 들어온다.
-# 2. 몇개인지 묻는 카드가 들어온다.
-# 3. 개수를 출력한다.
+# 1.자기가 가지고 있는 개수를 센다
+# 2.들어오는 거에 맞춰서 있는지 없는지 판단한다.
+# 3.있으면 딕셔너리에서 값을 꺼내온다.
